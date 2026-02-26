@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  pcb-frontend:
+    container_name: pcb-landing-page
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      # Port 8080 di VPS akan diarahkan ke port 80 di dalam container
+      - "8080:80"
+    restart: unless-stopped
+    networks:
+      - pcb-network
+
+networks:
+  pcb-network:
+    driver: bridge

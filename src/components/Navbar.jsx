@@ -2,6 +2,24 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 export default function Navbar() {
+  
+  // Fungsi untuk custom smooth scroll dengan offset
+  const handleScroll = (e, targetId) => {
+    e.preventDefault(); // Mencegah lompatan default dari tag <a>
+    const targetElement = document.getElementById(targetId);
+    
+    if (targetElement) {
+      const navbarHeight = 80; // Perkiraan tinggi navbar lu
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -12,15 +30,36 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         
         {/* Logo Text - Gradasi Custom */}
-        <div className="text-2xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-pcb-blue to-pcb-green cursor-pointer">
+        <div 
+          onClick={(e) => handleScroll(e, 'beranda')} 
+          className="text-2xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-pcb-blue to-pcb-green cursor-pointer"
+        >
           PCB<span className="text-pcb-light text-sm font-medium ml-2 tracking-normal">Smart Kandang</span>
         </div>
 
         {/* Navigation Links - Desktop */}
         <div className="hidden md:flex space-x-8 text-pcb-light/80 font-medium">
-          <a href="#beranda" className="hover:text-pcb-green transition-colors">Beranda</a>
-          <a href="#fitur" className="hover:text-pcb-blue transition-colors">Fitur</a>
-          <a href="#live-data" className="hover:text-pcb-orange transition-colors">Live Data</a>
+          <a 
+            href="#beranda" 
+            onClick={(e) => handleScroll(e, 'beranda')} 
+            className="hover:text-pcb-green transition-colors"
+          >
+            Beranda
+          </a>
+          <a 
+            href="#fitur" 
+            onClick={(e) => handleScroll(e, 'fitur')} 
+            className="hover:text-pcb-blue transition-colors"
+          >
+            Fitur
+          </a>
+          <a 
+            href="#live-data" 
+            onClick={(e) => handleScroll(e, 'live-data')} 
+            className="hover:text-pcb-orange transition-colors"
+          >
+            Live Data
+          </a>
         </div>
 
         {/* CTA Button - Pakai Orange */}
