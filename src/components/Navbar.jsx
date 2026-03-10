@@ -112,8 +112,8 @@ export default function Navbar() {
                 asChild
                 className="w-full mt-4 bg-pcb-blue hover:bg-pcb-blue/90 text-white rounded-lg font-semibold"
               >
-                <a href="https://api.pcb.my.id" target="_blank" rel="noopener noreferrer">
-                  Buka Dashboard
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  Download Aplikasi
                 </a>
               </Button>
             </div>
