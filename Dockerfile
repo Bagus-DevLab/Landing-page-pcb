@@ -26,6 +26,9 @@ RUN rm -rf /usr/share/nginx/html/*
 # Copy hasil build dari Tahap 1 (folder dist) ke folder Nginx
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 
+# Copy custom Nginx configuration untuk SPA routing
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 # Expose port 80 di dalam container
 EXPOSE 80
 
