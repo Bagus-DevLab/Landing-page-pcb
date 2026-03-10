@@ -1,70 +1,56 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ThermometerSun, Droplets, Wind, Waves, Lightbulb, Wheat } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 
 const featuresData = [
   {
     title: 'Monitoring Suhu',
     description: 'Pemantauan suhu kandang secara berkala untuk menjaga iklim tetap stabil dan nyaman bagi ternak.',
-    icon: (
-      <svg className="w-8 h-8 text-pcb-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-      </svg>
-    ),
-    color: 'border-pcb-orange',
+    icon: ThermometerSun,
+    textColor: 'text-orange-600',
+    iconBg: 'bg-orange-50',
+    borderColor: 'border-orange-100',
   },
   {
     title: 'Monitoring Kelembaban',
     description: 'Pengawasan kelembaban udara untuk mencegah pertumbuhan jamur dan bakteri di lingkungan kandang.',
-    icon: (
-      <svg className="w-8 h-8 text-pcb-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-      </svg>
-    ),
-    color: 'border-pcb-blue',
+    icon: Droplets,
+    textColor: 'text-blue-600',
+    iconBg: 'bg-blue-50',
+    borderColor: 'border-blue-100',
   },
   {
     title: 'Monitoring Amonia',
     description: 'Deteksi kadar amonia dari kotoran ayam untuk menjaga kualitas udara dan kesehatan pernapasan.',
-    icon: (
-      <svg className="w-8 h-8 text-pcb-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-      </svg>
-    ),
-    color: 'border-pcb-green',
+    icon: Wind,
+    textColor: 'text-emerald-600',
+    iconBg: 'bg-emerald-50',
+    borderColor: 'border-emerald-100',
   },
   {
     title: 'Kontrol Pompa Pembersih',
     description: 'Aktivasi pompa pembersih kotoran secara otomatis berdasarkan kondisi kandang dan jadwal yang ditentukan.',
-    icon: (
-      <svg className="w-8 h-8 text-pcb-light" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-      </svg>
-    ),
-    color: 'border-pcb-light/20',
+    icon: Waves,
+    textColor: 'text-cyan-600',
+    iconBg: 'bg-cyan-50',
+    borderColor: 'border-cyan-100',
   },
   {
     title: 'Manajemen Lampu Kandang',
     description: 'Pengaturan jadwal dan intensitas lampu untuk mendukung siklus istirahat dan pertumbuhan ayam.',
-    icon: (
-      <svg className="w-8 h-8 text-pcb-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 2a6 6 0 00-6 6c0 1.93.91 3.68 2.34 4.8.36.28.66.64.86 1.06l.1.27h5.4l.1-.27c.2-.42.5-.78.86-1.06A6 6 0 0018 8a6 6 0 00-6-6z" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 18h6M10 22h4" />
-      </svg>
-    ),
-    color: 'border-white/10',
+    icon: Lightbulb,
+    textColor: 'text-amber-500',
+    iconBg: 'bg-amber-50',
+    borderColor: 'border-amber-100',
   },
   {
-    title: 'Otomatisasi Pemberian Pakan',
+    title: 'Otomatisasi Pakan',
     description: 'Distribusi pakan terjadwal dengan kontrol yang mudah melalui dashboard untuk memastikan asupan selalu cukup.',
-    icon: (
-      <svg className="w-8 h-8 text-pcb-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M4 7l8-4 8 4-8 4-8-4z" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M4 7v6l8 4 8-4V7" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 11l8-4" />
-      </svg>
-    ),
-    color: 'border-white/10',
+    icon: Wheat,
+    textColor: 'text-indigo-600',
+    iconBg: 'bg-indigo-50',
+    borderColor: 'border-indigo-100',
   },
 ];
 
@@ -73,24 +59,28 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.15,
     },
   },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 50 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' },
+    transition: { duration: 0.5, ease: 'easeOut' },
   },
 };
 
 export default function Features() {
   return (
-    <section id="fitur" className="py-24 px-6 bg-slate-900/50">
-      <div className="max-w-7xl mx-auto">
+    <section id="fitur" className="py-24 px-6 bg-white relative overflow-hidden">
+      {/* Dekorasi Background Sangat Halus */}
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-50/50 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-orange-50/50 rounded-full blur-[100px] pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -99,38 +89,44 @@ export default function Features() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-pcb-light">
-            Fitur Utama <span className="text-pcb-green">Smart Kandang PCB</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-slate-900 tracking-tight">
+            Fitur Utama <span className="text-pcb-blue">Smart Kandang PCB</span>
           </h2>
-          <p className="text-pcb-light/70 max-w-2xl mx-auto text-lg">
+          <p className="text-slate-600 max-w-2xl mx-auto text-lg leading-relaxed">
             Kenali rangkaian modul monitoring dan otomatisasi yang memastikan kandang tetap bersih, nyaman, dan memiliki suplai pakan yang teratur.
           </p>
         </motion.div>
 
-        {/* Grid Cards */}
+        {/* Grid Cards using Shadcn UI Minimalist Style */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {featuresData.map((feature, index) => (
-            <motion.div
-              key={index}
-              variants={cardVariants}
-              whileHover={{ y: -10 }}
-              className={`bg-pcb-dark/80 p-8 rounded-2xl border-t-4 ${feature.color} shadow-lg backdrop-blur-sm transition-all hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]`}
-            >
-              <div className="w-14 h-14 bg-pcb-dark rounded-xl flex items-center justify-center mb-6 shadow-inner border border-white/5">
-                {feature.icon}
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-pcb-light">{feature.title}</h3>
-              <p className="text-pcb-light/70 leading-relaxed text-sm">
-                {feature.description}
-              </p>
-            </motion.div>
-          ))}
+          {featuresData.map((feature, index) => {
+            const IconComponent = feature.icon;
+            return (
+              <motion.div key={index} variants={cardVariants} whileHover={{ y: -6 }} className="h-full">
+                <Card className={`h-full bg-white border border-slate-200 hover:border-slate-300 transition-all duration-300 shadow-sm hover:shadow-md overflow-hidden group`}>
+                  <CardHeader className="pb-4 relative">
+                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-4 ${feature.iconBg} border ${feature.borderColor} transition-transform duration-300 group-hover:scale-105 group-hover:-rotate-3`}>
+                      <IconComponent className={`w-7 h-7 ${feature.textColor}`} />
+                    </div>
+                    <CardTitle className="text-xl text-slate-900 font-semibold tracking-tight">
+                      {feature.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-slate-600 text-base leading-relaxed">
+                      {feature.description}
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

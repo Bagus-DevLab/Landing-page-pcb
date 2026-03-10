@@ -1,15 +1,18 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export default function Navbar() {
-  
+  const [isOpen, setIsOpen] = useState(false);
+
   // Fungsi untuk custom smooth scroll dengan offset
   const handleScroll = (e, targetId) => {
-    e.preventDefault(); // Mencegah lompatan default dari tag <a>
+    e.preventDefault();
     const targetElement = document.getElementById(targetId);
-    
+
     if (targetElement) {
-      const navbarHeight = 80; // Perkiraan tinggi navbar lu
+      const navbarHeight = 80;
       const elementPosition = targetElement.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - navbarHeight;
 
@@ -17,6 +20,7 @@ export default function Navbar() {
         top: offsetPosition,
         behavior: "smooth"
       });
+      setIsOpen(false);
     }
   };
 
@@ -25,57 +29,97 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 bg-pcb-dark/90 backdrop-blur-md border-b border-pcb-blue/20"
+      className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200"
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        
-        {/* Logo Text - Gradasi Custom */}
-        <div 
-          onClick={(e) => handleScroll(e, 'beranda')} 
-          className="text-2xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-pcb-blue to-pcb-green cursor-pointer"
+
+        {/* Logo Text */}
+        <div
+          onClick={(e) => handleScroll(e, 'beranda')}
+          className="text-2xl font-black tracking-wider text-slate-900 cursor-pointer hover:opacity-80 transition-opacity"
         >
-          PCB<span className="text-pcb-light text-sm font-medium ml-2 tracking-normal">Smart Kandang</span>
+          PCB<span className="text-slate-500 text-sm font-medium ml-2 tracking-normal">Smart Kandang</span>
         </div>
 
         {/* Navigation Links - Desktop */}
-        <div className="hidden md:flex space-x-8 text-pcb-light/80 font-medium">
-          <a 
-            href="#beranda" 
-            onClick={(e) => handleScroll(e, 'beranda')} 
-            className="hover:text-pcb-green transition-colors"
+        <div className="hidden md:flex items-center space-x-8 text-slate-600 font-medium">
+          <a
+            href="#beranda"
+            onClick={(e) => handleScroll(e, 'beranda')}
+            className="hover:text-pcb-blue transition-colors text-sm"
           >
             Beranda
           </a>
-          <a 
-            href="#fitur" 
-            onClick={(e) => handleScroll(e, 'fitur')} 
-            className="hover:text-pcb-blue transition-colors"
+          <a
+            href="#fitur"
+            onClick={(e) => handleScroll(e, 'fitur')}
+            className="hover:text-pcb-blue transition-colors text-sm"
           >
-            Fitur
+            Fitur Utama
           </a>
-          
         </div>
 
-        {/* CTA Button - Pakai Orange */}
+        {/* CTA Button - Desktop */}
         <div className="hidden md:block">
-          <a
-            href="https://api.pcb.my.id" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-5 py-2.5 bg-pcb-orange hover:bg-opacity-80 text-pcb-light rounded-full font-bold text-sm transition-all shadow-[0_0_15px_rgba(250,130,76,0.3)] hover:shadow-[0_0_20px_rgba(250,130,76,0.5)]"
+          <Button
+            asChild
+            className="bg-pcb-blue hover:bg-pcb-blue/90 text-white rounded-full font-semibold shadow-[0_0_15px_rgba(60,145,230,0.2)] hover:shadow-[0_0_20px_rgba(60,145,230,0.4)] transition-all"
           >
-            Buka Dashboard
-          </a>
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              Download Aplikasi
+            </a>
+          </Button>
         </div>
 
         {/* Mobile Menu Icon */}
-        <div className="md:hidden text-pcb-light cursor-pointer hover:text-pcb-green">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-7 h-7">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3 12h18M3 6h18M3 18h18" />
-          </svg>
+        <div className="md:hidden text-slate-600 cursor-pointer">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+          >
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </Button>
         </div>
-
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-white/95 backdrop-blur-xl border-b border-slate-200 overflow-hidden"
+          >
+            <div className="px-6 py-6 flex flex-col space-y-4">
+              <a
+                href="#beranda"
+                onClick={(e) => handleScroll(e, 'beranda')}
+                className="text-slate-700 hover:text-pcb-blue transition-colors font-medium text-lg"
+              >
+                Beranda
+              </a>
+              <a
+                href="#fitur"
+                onClick={(e) => handleScroll(e, 'fitur')}
+                className="text-slate-700 hover:text-pcb-blue transition-colors font-medium text-lg"
+              >
+                Fitur Utama
+              </a>
+              <Button
+                asChild
+                className="w-full mt-4 bg-pcb-blue hover:bg-pcb-blue/90 text-white rounded-lg font-semibold"
+              >
+                <a href="https://api.pcb.my.id" target="_blank" rel="noopener noreferrer">
+                  Buka Dashboard
+                </a>
+              </Button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }
