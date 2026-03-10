@@ -2,7 +2,6 @@ import React from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Features from './components/Features'
-import LiveData from './components/LiveData' 
 import Footer from './components/Footer' 
 
 function App() {
@@ -13,7 +12,6 @@ function App() {
       <main>
         <Hero />
         <Features />
-        <LiveData />
       </main>
       <Footer />
     </div>

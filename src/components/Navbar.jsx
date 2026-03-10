@@ -53,13 +53,7 @@ export default function Navbar() {
           >
             Fitur
           </a>
-          <a 
-            href="#live-data" 
-            onClick={(e) => handleScroll(e, 'live-data')} 
-            className="hover:text-pcb-orange transition-colors"
-          >
-            Live Data
-          </a>
+          
         </div>
 
         {/* CTA Button - Pakai Orange */}

@@ -30,7 +30,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="text-lg md:text-xl text-pcb-light/80 mb-10 max-w-2xl mx-auto leading-relaxed"
         >
-          Solusi IoT terintegrasi untuk memantau suhu, kelembaban, dan kadar amonia secara real-time. Tingkatkan efisiensi peternakan dengan otomatisasi pakan dan pengolahan limbah.
+          Platform IoT terintegrasi untuk memantau suhu, kelembaban, dan kadar amonia sekaligus mengotomatisasi pompa pembersih, pencahayaan, serta pemberian pakan.
         </motion.p>
 
         {/* Animasi Tombol */}
@@ -41,16 +41,18 @@ export default function Hero() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <a
-            href="#live-data"
+            href="#fitur"
             className="w-full sm:w-auto px-8 py-4 bg-pcb-orange hover:bg-opacity-90 text-pcb-light rounded-full font-bold text-lg transition-all shadow-[0_0_20px_rgba(250,130,76,0.4)] hover:shadow-[0_0_30px_rgba(250,130,76,0.6)]"
           >
-            Lihat Live Data
+            Lihat Fitur Utama
           </a>
           <a
-            href="#fitur"
+            href="https://api.pcb.my.id"
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-pcb-blue text-pcb-blue hover:bg-pcb-blue hover:text-pcb-dark rounded-full font-bold text-lg transition-all"
           >
-            Pelajari Fitur
+            Buka Dashboard
           </a>
         </motion.div>
       </div>

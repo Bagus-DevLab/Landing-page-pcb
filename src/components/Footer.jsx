@@ -21,7 +21,7 @@ export default function Footer() {
           <ul className="space-y-2 text-pcb-light/60 text-sm">
             <li><a href="#beranda" className="hover:text-pcb-green transition-colors">Beranda</a></li>
             <li><a href="#fitur" className="hover:text-pcb-blue transition-colors">Fitur Sistem</a></li>
-            <li><a href="#live-data" className="hover:text-pcb-orange transition-colors">Live Dashboard</a></li>
+            
           </ul>
         </div>
 
