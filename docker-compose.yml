@@ -1,4 +1,3 @@
-
 services:
   pcb-frontend:
     container_name: pcb-landing-page
@@ -6,12 +5,17 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      # Port 8080 di VPS akan diarahkan ke port 80 di dalam container
-      - "8080:80"
+      # KUNCI KEAMANAN: Bind ke localhost agar tidak terekspos publik
+      - "127.0.0.1:8080:80"
     restart: unless-stopped
     networks:
       - pcb-network
+      # Daftarkan ke network NPM agar bisa di-routing
+      - api-pcb_iot_network
 
 networks:
   pcb-network:
     driver: bridge
+  # Deklarasikan network eksternal
+  api-pcb_iot_network:
+    external: true
